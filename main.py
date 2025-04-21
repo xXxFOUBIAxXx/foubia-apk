@@ -1507,7 +1507,7 @@ class Proxy:
                                 time.sleep(5)
                                 ################################                                                     	      	      	      	      	     	      	      	
                         if b'/help' in dataS:
-                            BesTo_msg(f"""[FF0000][i][b][c]\n\n- Welcome To XTZ BOT V2 !\n\n""", dataS.hex(), client)
+                            BesTo_msg(f"""[FF0000][i][b][c]\n\n- Welcome To XTZ BOT PRO !\n\n""", dataS.hex(), client)
                             BesTo_msg(f"""[b][c][FFFF00]\n- مميزات واوامر البوت :\n""", dataS.hex(), client)
                             BesTo_msg(f"""[b][c][00FFFF]< خمسة اشخاص في الفريق  :  [FFFFFF]\n\n- /5sㅤㅤㅤㅤ""", dataS.hex(), client)
                             BesTo_msg(f"""[b][c][00FFFF]<  ستة اشخاص في الفريق  :  [FFFFFF]\n\n- /6sㅤㅤㅤ""", dataS.hex(), client)
