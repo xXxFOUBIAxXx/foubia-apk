@@ -21,7 +21,7 @@ class Proxy:
         self.username = "1"
         self.password = "1"
         self.website = "http://xtz-encrypt-apk.vercel.app/Encrypt?Uid={id}"
-        self.last_check_time = 0  # وقت آخر تحقق
+        
 
     def spam__invite(self, data, remote):
         global invit_spam
