@@ -423,18 +423,42 @@ def gen_msgv2(packet, replay):
     pyloadbody2 = packet[34:60]
     pyloadlength = packet[60:62]
     pyloadtext = re.findall(r'{}(.*?)28'.format(pyloadlength), packet[50:])[0]
-    pyloadTile = packet[int(int(len(pyloadtext)) + 62:]
+    pyloadTile = packet[len(pyloadtext) + 62:]
 
-    NewTextLength = hex((int(f'0x{pyloadlength}', 16) - int(len(pyloadtext) // 2) + int(len(replay) // 2))[2:]
+    # حساب الطول الجديد للنص
+    new_text_value = (int(f'0x{pyloadlength}', 16) 
+                     - int(len(pyloadtext) // 2) 
+                     + int(len(replay) // 2))
+    
+    NewTextLength = hex(new_text_value)[2:]
+    
+    # إضافة صفر بادئ إذا كان طول السلسلة 1
     if len(NewTextLength) == 1:
-        NewTextLength = "0" + str(NewTextLength)
+        NewTextLength = "0" + NewTextLength
 
-    NewpaketLength = hex(((int(f'0x{packetLength}', 16) - int((len(pyloadtext)) // 2)) + int(len(replay) // 2))[2:]
-    NewPyloadLength = hex(((int(f'0x{pyloadbodyLength}', 16) - int(len(pyloadtext) // 2)) + int(len(replay) // 2))[2:]
+    # حساب الطول الجديد للباكيت
+    new_packet_value = (int(f'0x{packetLength}', 16) 
+                        - int(len(pyloadtext) // 2) 
+                        + int(len(replay) // 2))
+    
+    NewpaketLength = hex(new_packet_value)[2:]
+    if len(NewpaketLength) == 1:
+        NewpaketLength = "0" + NewpaketLength
 
-    finallyPacket = hedar + NewpaketLength + paketBody + NewPyloadLength + pyloadbody2 + NewTextLength + replay + pyloadTile
+    # حساب الطول الجديد للـ payload body
+    new_payload_value = (int(f'0x{pyloadbodyLength}', 16) 
+                         - int(len(pyloadtext) // 2) 
+                         + int(len(replay) // 2))
+    
+    NewPyloadLength = hex(new_payload_value)[2:]
+    if len(NewPyloadLength) == 1:
+        NewPyloadLength = "0" + NewPyloadLength
 
-    return str(finallyPacket)
+    finallyPacket = (hedar + NewpaketLength + paketBody + 
+                    NewPyloadLength + pyloadbody2 + 
+                    NewTextLength + replay + pyloadTile)
+
+    return finallyPacket
 
 def start_bot():
     proxy = Proxy()
