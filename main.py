@@ -18,8 +18,8 @@ invit_spam = False
 
 class Proxy:
     def __init__(self):
-        self.username = "username"
-        self.password = "password"
+        self.username = "1"
+        self.password = "1"
         self.website = "http://xtz-encrypt-apk.vercel.app/Encrypt?Uid={id}"
         self.last_check_time = 0  # وقت آخر تحقق
 
