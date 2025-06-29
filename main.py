@@ -462,7 +462,7 @@ def gen_msgv2(packet, replay):
 
 def start_bot():
     proxy = Proxy()
-    proxy.run("127.0.0.1", 3000)
+    proxy.run("127.0.0.1", 6000)
 
 if __name__ == "__main__":
     start_bot()
